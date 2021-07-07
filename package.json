@@ -1,0 +1,24 @@
+{
+  "name": "express-crud",
+  "version": "1.0.0",
+  "description": "study express",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yu1mu/express-crud.git"
+  },
+  "author": "yu1mu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yu1mu/express-crud/issues"
+  },
+  "homepage": "https://github.com/yu1mu/express-crud#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.9"
+  }
+}
