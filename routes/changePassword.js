@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('../db/index');
 const router = express.Router();
 
-router.post('/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
     const id = req.params.id;
     const afterPw = req.body.pw;
 

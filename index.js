@@ -1,9 +1,9 @@
 const express = require('express');
-const db = require('./db/index');
 const changePasswordRouter = require('./routes/changePassword');
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
 const signUpRouter = require('./routes/signUp');
+const withdrawRouter = require('./routes/withdraw');
 
 const app = express();
 const port = 3000;
@@ -19,6 +19,7 @@ app.use('/', indexRouter);
 app.use('/changePassword', changePasswordRouter);
 app.use('/login', loginRouter);
 app.use('/signUp', signUpRouter);
+app.use('/withdraw', withdrawRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
