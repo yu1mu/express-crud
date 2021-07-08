@@ -1,21 +1,20 @@
 const express = require('express');
-const mysql = require('mysql');
 const db = require('./db/index');
+const indexRouter = require('./routes/index');
+const signUpRouter = require('./routes/signUp');
 
 const app = express();
 const port = 3000;
+
+app.use(express.json());
+app.use(express.urlencoded({ extends: true }));
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-app.get('/user', (req, res) => {
-    db.query('SELECT * FROM user', (err, result) => {
-        if (err) throw err;
-        console.log('User info: ', result);
-        res.send(result);
-    });
-});
+app.use('/', indexRouter);
+app.use('/signUp', signUpRouter);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
