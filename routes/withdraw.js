@@ -5,9 +5,9 @@ const router = express.Router();
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
 
-    const sql = 'DELETE FROM user WHERE = ?';
+    const sql = 'DELETE FROM user WHERE id = ?';
 
-    db.query(sql, id, (err, result) => {
+    db.query(sql, Number(id), (err) => {
         if (err) throw err;
         res.status(204);
     });

@@ -8,7 +8,7 @@ router.patch('/:id', (req, res) => {
 
     const sql = 'UPDATE user SET user_pw = ? WHERE id = ?';
 
-    db.query(sql, [afterPw, Number(id)], (err, result) => {
+    db.query(sql, [afterPw, Number(id)], (err) => {
         if (err) throw err;
         res.status(200).send('Password changed!');
     });

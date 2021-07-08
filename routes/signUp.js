@@ -9,7 +9,7 @@ router.post('/', (req, res) => {
 
     const sql = 'INSERT INTO user(user_id, user_pw, user_name) VALUES (?, ?, ?)';
 
-    db.query(sql, [id, pw, name], (err, result) => {
+    db.query(sql, [id, pw, name], (err) => {
         if (err) throw err;
         res.status(200).send('Sign Up Success!');
     });
