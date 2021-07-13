@@ -2,6 +2,7 @@ const express = require('express');
 const changePasswordRouter = require('./routes/changePassword');
 const indexRouter = require('./routes/index');
 const loginRouter = require('./routes/login');
+const searchRouter = require('./routes/search');
 const signUpRouter = require('./routes/signUp');
 const withdrawRouter = require('./routes/withdraw');
 
@@ -17,6 +18,7 @@ app.get('/', (req, res) => {
 app.use('/', indexRouter);
 app.use('/changePassword', changePasswordRouter);
 app.use('/login', loginRouter);
+app.use('/search', searchRouter);
 app.use('/signUp', signUpRouter);
 app.use('/withdraw', withdrawRouter);
 
