@@ -16,7 +16,6 @@ const logger = function (req, res, next) {
 }
 
 app.use(express.json());
-app.use(logger);
 
 app.get('/', (req, res) => {
     res.send('Hello World!');
@@ -28,6 +27,8 @@ app.use('/login', loginRouter);
 app.use('/search', searchRouter);
 app.use('/signUp', signUpRouter);
 app.use('/withdraw', withdrawRouter);
+
+app.use(logger);
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`);
