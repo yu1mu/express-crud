@@ -2,7 +2,7 @@ const express = require('express');
 const db = require('../db/index');
 const router = express.Router();
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     const id = req.body.id;
     const pw = req.body.pw;
     const name = req.body.name;
@@ -11,7 +11,8 @@ router.post('/', async (req, res) => {
 
     try {
         await db.query(sql, [id, pw, name]);
-        return res.status(200).send('Sign Up Success!');
+        res.status(200).send('Sign Up Success!');
+        return next();
     } catch (err) {
         throw err;
     }

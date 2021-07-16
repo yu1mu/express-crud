@@ -5,11 +5,13 @@ const router = express.Router();
 router.delete('/:id',  async (req, res, next) => {
     const id = req.params.id;
 
-    const sqlA = 'SELECT * FROM user WHERE id = ?'
+    const sql_search = 'SELECT * FROM user WHERE id = ?'
     try {
-        const data = await db.query(sqlA, Number(id));
-        next ();
-        if (data.length === 0) return res.status(404).send('Not Found User');
+        const data = await db.query(sql_search, Number(id));
+        if (data.length === 0) {
+            res.status(404).send('Not Found User');
+            return next();
+        }
     } catch (err) {
         throw err;
     }
@@ -18,9 +20,8 @@ router.delete('/:id',  async (req, res, next) => {
 
     try {
         await db.query(sql, Number(id));
-        next();
-        return res.status(204).end();
-
+        res.status(204).end();
+        return next();
     } catch (err) {
         throw err;
     }

@@ -4,7 +4,7 @@ const router = express.Router();
 
 const filters = require('../utilities/filter');
 
-router.post('/', async (req, res) => {
+router.post('/', async (req, res, next) => {
     const param_options = ["id", "pw", "name"];
     let sql = 'SELECT * FROM user where ';
     const searchFilter = filters.searchFilter(req.body, param_options);
@@ -13,7 +13,9 @@ router.post('/', async (req, res) => {
 
     const result = await db.query(sql, searchFilter.params);
 
-    return res.json({sql, result});
+    res.json({sql, result});
+
+    return next();
 });
 
 module.exports = router;
